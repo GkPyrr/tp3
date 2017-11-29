@@ -85,33 +85,46 @@ ostream& operator<<(ostream& os, deplacement& d)
 }
 
 void deplacement::avance(map<char>& carte, entity& who) {
-	char direction = who.getDirection;
-	if (canAdvance(carte,who.getY,who.getX,direction)) {
-		carte[who.getX()][who.getY] = '0';
+	char direction = who.getDirection();
+	if (canAdvance(carte,who.getY(),who.getX(),direction, '0')) {
+		carte[who.getX()][who.getY()] = '0';
 		who.move();
+		carte[who.getX()][who.getY()] = 'V';
 		// mettre le son de mouvement
+	}
+	else if (canAdvance(carte, who.getY(), who.getX(), direction, 'Z')) {
+		// si who = player then die else do nothing
+		// z = zombie
+		// avec son de mort + lose ?
+	}
+	else if(canAdvance(carte, who.getY(), who.getX(), direction, 'P')) {
+		// p = porte ou truc a acheter
+		// afficher le prix du truc ? 
+	}
+	else {
+		// bruit collision, do nothing
 	}
 }
 
-bool deplacement::canAdvance(map<char>& carte, int y , int x, char direction) {
+bool deplacement::canAdvance(map<char>& carte,const int& y ,const int& x,const char& direction, char cas) {
 	if (y > 0)
 		if (direction == 'N')
-			if ((carte[x][y - 1] == '0'))
+			if ((carte[x][y - 1] == cas))
 				return true;
 
 	if (x < carte.nbLine())
 		if (direction == 'E')
-			if ((carte[x + 1][y] == '0'))
+			if ((carte[x + 1][y] == cas))
 				return true;
 
 	if (y < carte.nbCol())
 		if (direction == 'S')
-			if ((carte[x][y + 1] == '0'))
+			if ((carte[x][y + 1] == cas))
 				return true;
 
 	if (x > 0)
 		if (direction == 'O')
-			if ((carte[x - 1][y] == '0'))
+			if ((carte[x - 1][y] == cas))
 				return true;
 
 	return false;

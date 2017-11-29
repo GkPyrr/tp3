@@ -50,7 +50,7 @@ sortie << '.';
 			}
 			else if (m[i][j] == 'V') {  // Visite
 				setColor  FOREGROUND_INTENSITY | FOREGROUND_RED);
-				sortie << '.';
+				sortie << 'P';
 			}
 			sortie << " "; // charatère qui permet d'espacer les charactère de la map
 						   // pour éviter toute confusion

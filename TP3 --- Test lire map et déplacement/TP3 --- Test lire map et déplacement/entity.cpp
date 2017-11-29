@@ -1,5 +1,5 @@
 
-#include "stdafx.h"
+
 #include "entity.h"
 
 
@@ -46,7 +46,7 @@ void entity::move()
 }
 
 // Change la direction de 90 degree anti-clockwise
-void entity::turnLeft()
+void entity::turnLeft()			// ======================================================= a suprimer si il n'y a pas utiliser
 {
 	switch (_direction)
 	{
@@ -66,7 +66,7 @@ void entity::turnLeft()
 }
 
 // Change la direction de 90 degree clockwise
-void entity::turnRight()
+void entity::turnRight()			// ======================================================= a suprimer si il n'y a pas utiliser
 {
 	switch (_direction)
 	{

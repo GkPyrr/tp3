@@ -9,7 +9,6 @@ empiler la position de départ. La pile sera une pile de déplacement.
 ******************************************************************************/
 
 #pragma once
-#include "deplacement.h"
 ///////////////////
 #include <assert.h>
 #include <iostream>

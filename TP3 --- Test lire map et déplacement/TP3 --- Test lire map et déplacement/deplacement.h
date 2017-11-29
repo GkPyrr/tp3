@@ -37,8 +37,8 @@ public:
 	int getX()const;                                    // Retourne la position X
 	int getY()const;                                    // Retourne la position Y
 	ostream& print(ostream& os = cout)const;            // Affiche les coordonnees et la direction
-	void avance(map<char>& carte, entity& who);						// va essayer d'avancer
-	bool canAdvance(map<char>& carte, int y, int x, char direction)		// check si peu avancer
+	void avance(map<char>& carte, entity & who);						// va essayer d'avancer
+	bool canAdvance(map<char>& carte, const int& y, const int& x, const char& direction, char cas);		// check si peu avancer
 };
 
 ostream& operator<<(ostream& os, deplacement& d);       // operateur <<

@@ -10,6 +10,8 @@
 #include <iostream>
 #include "map.hpp"
 #include "vecteur.hpp"
+#include "movement.h"
+#include "entity.h"
 #include <string>
 #include <SFML\Graphics.hpp>
 
@@ -23,7 +25,8 @@ enum texture_type
 	wall,
 	lowWallH,
 	lowWallV,
-	tunnel
+	tunnel,
+	player
 };
 
 //programme principale
@@ -37,7 +40,7 @@ int main(int argc, const char **argv)
 
 	//image du plancher
 	Texture allayTex;
-	if (!allayTex.loadFromFile("allay.png"))
+	if (!allayTex.loadFromFile("floor.png"))
 		return EXIT_FAILURE;
 
 	//image des murs
@@ -47,25 +50,34 @@ int main(int argc, const char **argv)
 
 	//image des petits murs horizontal
 	Texture lowWallHTex;
-	if (!lowWallHTex.loadFromFile("lowWallH.png"))
+	if (!lowWallHTex.loadFromFile("box.png"))
 		return EXIT_FAILURE;
 
 	//image des petits murs vectical
 	Texture lowWallVTex;
-	if (!lowWallVTex.loadFromFile("lowWallV.png"))
+	if (!lowWallVTex.loadFromFile("box.png"))
 		return EXIT_FAILURE;
 
 	//image d'un tunnel
 	Texture tunnelTex;
 	if (!tunnelTex.loadFromFile("tunnel.png"))
 		return EXIT_FAILURE;
-	
+
+	//image du joueur
+	Texture playerTex;
+	if (!playerTex.loadFromFile("player.png"))
+		return EXIT_FAILURE;
+
 	//objet contenant les images
 	Sprite *allay;
 	Sprite *wall;
 	Sprite *lowWallH;
 	Sprite *lowWallV;
 	Sprite *tunnel;
+
+	Sprite player;
+	player.setTexture(playerTex);
+	player.setPosition(Vector2f(400.0, 400.0));
 
 	//vecteur de texture
 	gen::vecteur<Texture> texVec;
@@ -92,6 +104,10 @@ int main(int argc, const char **argv)
 		Event event;
 		while (window.pollEvent(event))
 		{
+			///test de deplacement
+			if (Keyboard::W)
+				player.setPosition(Vector2f(player.getPosition().x, player.getPosition().y - 2.0));
+
 			//ferme la fenetre
 			if (event.type == Event::Closed)
 				window.close();
@@ -108,7 +124,7 @@ int main(int argc, const char **argv)
 				{
 					allay = new Sprite;
 					allay->setTexture(texVec[0]);
-					allay->setPosition((i * 40), (j * 40));
+					allay->setPosition(Vector2f((i * 40.0), (j * 40.0)));
 					window.draw(*allay);
 					break;
 				}
@@ -116,7 +132,7 @@ int main(int argc, const char **argv)
 				{
 					wall = new Sprite;
 					wall->setTexture(texVec[1]);
-					wall->setPosition((i * 40), (j * 40));
+					wall->setPosition(Vector2f((i * 40.0), (j * 40.0)));
 					window.draw(*wall);
 					break;
 				}
@@ -124,7 +140,7 @@ int main(int argc, const char **argv)
 				{
 					lowWallH = new Sprite;
 					lowWallH->setTexture(texVec[2]);
-					lowWallH->setPosition((i * 40), (j * 40));
+					lowWallH->setPosition(Vector2f((i * 40.0), (j * 40.0)));
 					window.draw(*lowWallH);
 					break;
 				}
@@ -132,7 +148,7 @@ int main(int argc, const char **argv)
 				{
 					lowWallV = new Sprite;
 					lowWallV->setTexture(texVec[3]);
-					lowWallV->setPosition((i * 40), (j * 40));
+					lowWallV->setPosition(Vector2f((i * 40.0), (j * 40.0)));
 					window.draw(*lowWallV);
 					break;
 				}
@@ -140,12 +156,15 @@ int main(int argc, const char **argv)
 				{
 					tunnel = new Sprite;
 					tunnel->setTexture(texVec[4]);
-					tunnel->setPosition((i * 40), (j * 40));
+					tunnel->setPosition(Vector2f((i * 40.0), (j * 40.0)));
 					window.draw(*tunnel);
 					break;
 				}
 				}
 
+		window.draw(player);
+
+		///exemple de rotation SFML
 		/*Sprite rotation;
 		rotation.setTexture(texVec[4]);
 		rotation.setPosition(500, 450);

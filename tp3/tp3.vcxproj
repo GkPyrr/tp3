@@ -119,13 +119,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="movement.cpp" />
     <ClCompile Include="textureRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="map.hpp" />
+    <ClInclude Include="movement.h" />
     <ClInclude Include="textureRenderer.h" />
     <ClInclude Include="vecteur.hpp" />
   </ItemGroup>

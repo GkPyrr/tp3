@@ -1,5 +1,5 @@
 /*************************************************************************************
- *	Auteur:		Micaël Gaumond-Roy
+ *	Auteur:		Micael Gaumond-Roy
  *	Date:		20/09/2017
  *	Fichier:	vecteur.h
  *	But:		Manipulation d'un conteneur d'objet ou de variable en memoire

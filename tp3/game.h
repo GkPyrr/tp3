@@ -5,32 +5,19 @@
  *	But:		@@@@
  ************************************************************************************/
 #pragma once
+#include "textureRenderer.hpp"
+#include <fstream>
+#include <string>
 
-//#include "map.hpp"
-//#include <SFML\Graphics.hpp>
-//using namespace sf;
-//using namespace std;
-//
-////enumerateur de texture
-//enum texture_type
-//{
-//	allay,
-//	wall,
-//	lowWallH,
-//	lowWallV,
-//	tunnel
-//};
-//
-//namespace gen
-//{
-//	class game : public map<int>
-//	{
-//	private:
-//		//deplacement _move
-//	public:
-//		game();
-//		~game();
-//		//void init();
-//		//void print();
-//	};
-//}
+class game
+{
+private:
+	textureRenderer<Texture> _texRen;
+public:
+	game();
+	~game();
+
+	bool init();
+
+	void event(RenderWindow& window);
+};

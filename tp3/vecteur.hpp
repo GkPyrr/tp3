@@ -1,19 +1,20 @@
 /*************************************************************************************
- *	Auteur:		Micael Gaumond-Roy
- *	Date:		20/09/2017
- *	Fichier:	vecteur.h
- *	But:		Manipulation d'un conteneur d'objet ou de variable en memoire
- *				dynamique.
- *				Permet de construire et de detruire le conteneur.
- *				D'acceder et de modifier ses elements et sa taille.
- *				D'effacer son contenue et reinitialiser ses parametres.
- *				D'afficher et de comparer different conteneur.
- ************************************************************************************/
+*	Auteur:		Micael Gaumond-Roy
+*	Date:		20/09/2017
+*	Fichier:	vecteur.h
+*	But:		Manipulation d'un conteneur d'objet ou de variable en memoire
+*				dynamique.
+*				Permet de construire et de detruire le conteneur.
+*				D'acceder et de modifier ses elements et sa taille.
+*				D'effacer son contenue et reinitialiser ses parametres.
+*				D'afficher et de comparer different conteneur.
+************************************************************************************/
 #pragma once
 #include <iostream>
 #include <assert.h>
 
 using namespace std;
+
 namespace gen
 {
 	template <class TYPE>	//classe de tout type
@@ -55,7 +56,7 @@ namespace gen
 		void clear();	/*efface l'adresse memoire du vecteur
 						et remet sa taille a 0*/
 
-		vecteur<TYPE> operator+(const vecteur <TYPE>&v);	/*ajoute le contenu d'un
+		vecteur<TYPE> operator+(const vecteur <TYPE>&v)const;	/*ajoute le contenu d'un
 															vecteur dans un autre
 															vecteur*/
 		const vecteur<TYPE>& operator+=(const vecteur <TYPE>&v);	//concatene 2 vecteur
@@ -90,6 +91,7 @@ namespace gen
 	template <class TYPE>
 	vecteur<TYPE>::vecteur(int dim)
 	{
+		assert(dim >= 0);
 		_dim = dim;
 		_tab = nullptr;
 
@@ -294,8 +296,9 @@ namespace gen
 	template<class TYPE>
 	void vecteur<TYPE>::inverseRecursive(int pos)
 	{
-		assert(pos < _dim);
+		assert(pos < _dim && pos >= 0);
 
+		//if(pos == _dim / 2)
 		swap(*(_tab + pos), *(_tab + (_dim - 1) - pos));	/*permute les elements
 															a cette position*/
 
@@ -323,7 +326,7 @@ namespace gen
 
 	//ajoute le contenu d'un vecteur dans un autre vecteur
 	template <class TYPE>
-	vecteur<TYPE> vecteur<TYPE>::operator+(const vecteur <TYPE>&v)
+	vecteur<TYPE> vecteur<TYPE>::operator+(const vecteur <TYPE>&v)const
 	{
 		vecteur<TYPE> newVec(_dim + v._dim);	//declare un nouveau vecteur
 
@@ -367,7 +370,7 @@ namespace gen
 		if (v._dim != 0)	//reconstruire l'implicite si v est non-vide
 		{
 			_dim = v._dim;
-			_tab = new int[_dim];
+			_tab = new TYPE[_dim];
 
 			for (int i = 0; i < _dim; i++)
 				*(_tab + i) = *(v._tab + i);

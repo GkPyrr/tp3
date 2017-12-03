@@ -6,100 +6,127 @@
  ************************************************************************************/
 #include "game.h"
 
-//gen::game::game()
-//{
-//}
-//
-//gen::game::~game()
-//{
-//}
+game::game()
+{
+}
 
-//void gen::game::init()
-//{
-//	//cree la fenetre principale
-//	RenderWindow window(VideoMode(1280, 720, 32), ("Game"));
-//
-//	//limite le FPS a 60
-//	window.setFramerateLimit(60);
-//
-//	//image du plancher
-//	Texture allayTex;
-//	/*if (!allayTex.loadFromFile("allay.png"))
-//		return EXIT_FAILURE;*/
-//
-//	//image des murs
-//	Texture wallTex;
-//	/*if (!wallTex.loadFromFile("wall.png"))
-//		return EXIT_FAILURE;*/
-//
-//	//image des petits murs horizontal
-//	Texture lowWallHTex;
-//	/*if (!lowWallHTex.loadFromFile("lowWallH.png"))
-//		return EXIT_FAILURE;*/
-//
-//	//image des petits murs vectical
-//	Texture lowWallVTex;
-//	/*if (!lowWallVTex.loadFromFile("lowWallV.png"))
-//		return EXIT_FAILURE;*/
-//
-//	//image d'un tunnel
-//	Texture tunnelTex;
-//	/*if (!tunnelTex.loadFromFile("tunnel.png"))
-//		return EXIT_FAILURE;*/
-//
-//	//objet contenant les images
-//	Sprite *allay;
-//	Sprite *wall;
-//	Sprite *lowWallH;
-//	Sprite *lowWallV;
-//	Sprite *tunnel;
-//}
+game::~game()
+{
+}
 
-//void gen::game::print()
-//{
-//	for (int i = 0; i < 32; i++)
-//		for (int j = 0; j < 18; j++)
-//			switch (mapp[i][j])
-//			{
-//			case texture_type::allay:
-//			{
-//				allay = new Sprite;
-//				allay->setTexture(texVec[0]);
-//				allay->setPosition((i * 40), (j * 40));
-//				window.draw(*allay);
-//				break;
-//			}
-//			case texture_type::wall:
-//			{
-//				wall = new Sprite;
-//				wall->setTexture(texVec[1]);
-//				wall->setPosition((i * 40), (j * 40));
-//				window.draw(*wall);
-//				break;
-//			}
-//			case texture_type::lowWallH:
-//			{
-//				lowWallH = new Sprite;
-//				lowWallH->setTexture(texVec[2]);
-//				lowWallH->setPosition((i * 40), (j * 40));
-//				window.draw(*lowWallH);
-//				break;
-//			}
-//			case texture_type::lowWallV:
-//			{
-//				lowWallV = new Sprite;
-//				lowWallV->setTexture(texVec[3]);
-//				lowWallV->setPosition((i * 40), (j * 40));
-//				window.draw(*lowWallV);
-//				break;
-//			}
-//			case texture_type::tunnel:
-//			{
-//				tunnel = new Sprite;
-//				tunnel->setTexture(texVec[4]);
-//				tunnel->setPosition((i * 40), (j * 40));
-//				window.draw(*tunnel);
-//				break;
-//			}
-//			}
-//}
+bool game::init()
+{
+	//cree la fenetre principale
+	RenderWindow window(VideoMode(1280, 720, 32), ("Game"));
+
+	//limite le FPS a 60
+	window.setFramerateLimit(60);
+
+	//texture renderer
+	textureRenderer<Texture> mapTex;
+	
+	///pour les mouvements du player
+	//textureRenderer<Texture> playerMove;
+
+	//image du plancher
+	Texture floorTex;
+	Sprite* floor;
+	mapTex.add(floorTex);
+	if (!floorTex.loadFromFile("floor.png"))
+		return EXIT_FAILURE;
+
+	//image des murs
+	Texture wallTex;
+	Sprite* wall;
+	mapTex.add(wallTex);
+	if (!wallTex.loadFromFile("wall.png"))
+		return EXIT_FAILURE;
+
+	//image des coin de murs
+	Texture cornerTex;
+	Sprite* corner;
+	mapTex.add(cornerTex);
+	if (!wallTex.loadFromFile("corner.png"))
+		return EXIT_FAILURE;
+
+	//image des petits murs horizontal
+	Texture boxTex;
+	Sprite* box;
+	mapTex.add(boxTex);
+	if (!boxTex.loadFromFile("box.png"))
+		return EXIT_FAILURE;
+
+	//image du joueur
+	Texture playerTex;
+	Sprite* player;
+	mapTex.add(boxTex);
+	if (!playerTex.loadFromFile("player.png"))
+		return EXIT_FAILURE;
+
+	//flux d'entree
+	ifstream input;
+	input.open("map01.txt");
+
+	//carte du jeu
+	gen::map<int> gameMap;
+	gameMap.resize(32, 18);
+	gameMap.read(input);
+	input.close();
+
+	//boucle de l'execution principale
+	while (window.isOpen())
+	{
+		//boucle d'evenement
+		event(window);
+
+		//mise a jour de la fenetre
+		window.display();
+
+		for (int line = 0; line < 32; line++)
+			for (int col = 0; col < 18; col++)
+				switch (gameMap[line][col])
+				{
+				case typeFloor:
+				{
+					mapTex.print(floor, typeFloor, line, col);
+					window.draw(*floor);
+					break;
+				}
+				case typeWall:
+					mapTex.print(wall, typeWall, line, col);
+					window.draw(*wall);
+					break;
+				case typeCorner:
+					mapTex.print(corner, typeCorner, line, col);
+					window.draw(*corner);
+					break;
+				case typeBox:
+					mapTex.print(box, typeBox, line, col);
+					window.draw(*box);
+					break;
+				case typePlayer:
+					mapTex.print(player, typePlayer, line, col);
+					break;
+				}
+	}
+
+	window.clear();
+
+	return 0;
+}
+
+void game::event(RenderWindow& window)
+{
+	//evenement de processus
+	Event event;
+	while (window.pollEvent(event))
+	{
+		///test de deplacement
+		/*if (Keyboard::W)
+			player.setPosition(Vector2f(player.getPosition().x, player.getPosition().y - 2.0));*/
+
+		//ferme la fenetre
+		if (event.type == Event::Closed)
+			window.close();
+	}
+}

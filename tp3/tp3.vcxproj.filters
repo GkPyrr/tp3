@@ -18,16 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="textureRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="movement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,16 +29,10 @@
     <ClInclude Include="map.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="textureRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="movement.h">
+    <ClInclude Include="textureRenderer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

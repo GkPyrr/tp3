@@ -15,8 +15,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\deplacement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\labyrinthe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\deplacement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\labyrinthe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

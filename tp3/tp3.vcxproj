@@ -111,7 +111,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\deplacement.cpp" />
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\entity.cpp" />
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\labyrinthe.cpp" />
+    <ClCompile Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\deplacement.h" />
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\entity.h" />
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\labyrinthe.h" />
+    <ClInclude Include="..\TP3 --- Test lire map et déplacement\TP3 --- Test lire map et déplacement\map.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

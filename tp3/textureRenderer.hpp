@@ -6,7 +6,6 @@
  ************************************************************************************/
 #pragma once
 #include "vecteur.hpp"
-#include "map.hpp"
 #include <SFML\Graphics.hpp>
 
 using namespace sf;
@@ -39,14 +38,12 @@ public:
 template<class TYPE>
 textureRenderer<TYPE>::textureRenderer()
 {
-	_texVec = NULL;
 }
 
 //destructeur
 template<class TYPE>
 textureRenderer<TYPE>::~textureRenderer()
 {
-	_texVec = NULL;
 }
 
 //ajoute une texture au vecteur de texture
@@ -60,10 +57,10 @@ void textureRenderer<TYPE>::add(Texture tex)
 template<class TYPE>
 void textureRenderer<TYPE>::print(Sprite* sprite, texture_type type, int noLine, int noCol)
 {
+
 	sprite = new Sprite;
 	sprite->setTexture(_texVec[type]);
-	sprite->setPosition(Vector2f((noLine * 40), (noCol * 40)));
-	//sprite->setPosition(Vector2f(((float)noLine * 40), ((float)noCol * 40)));
+	sprite->setPosition(Vector2f((float)(noLine * 40), ((float)noCol * 40)));
 }
 
 ///probablement inutile

@@ -5,19 +5,27 @@
  *	But:		@@@@
  ************************************************************************************/
 #pragma once
-#include "textureRenderer.hpp"
+#include <SFML\Graphics.hpp>
+#include "map.hpp"
 #include <fstream>
 #include <string>
+#include "vecteur.hpp"
+
+using namespace sf;
 
 class game
 {
 private:
-	textureRenderer<Texture> _texRen;
+	gen::vecteur<Texture> _texRen;
+	gen::map<int> _gameMap;
+	RenderWindow _window;
+
+
 public:
 	game();
 	~game();
 
 	bool init();
 
-	void event(RenderWindow& window);
+	void event();
 };

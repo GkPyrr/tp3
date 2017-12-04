@@ -1,7 +1,7 @@
 /*************************************************************************************
  *	Auteur:		Micael Gaumond-Roy
  *	Date:		01/12/2017
- *	Fichier:	game.cpp
+ *	Fichier:	gun.cpp
  *	But:		@@@@@@@@@
  ************************************************************************************/
 #include "game.h"
@@ -20,8 +20,9 @@ bool game::init()
 	Sprite pos;
 	ifstream input;
 
-	char nomImage[5][15] = { "floor.png" ,"wall.png","corner.png",
-							"box.png","player.png" };
+	///nombre de i a checker si ajout d'image
+	char nomImage[6][15] = { "floor.png" ,"wall.png","corner.png",
+							"box.png","player.png", "menu.png" };
 
 	//cree la fenetre principale
 	_window.create(VideoMode(1280, 720, 32), ("Game"));
@@ -31,7 +32,7 @@ bool game::init()
 
 	///pour les mouvements du player
 	//textureRenderer<Texture> playerMove;
-	input.open("map01.txt");
+	input.open("map02.txt");
 
 	//carte du jeu
 	_gameMap.resize(18, 32);
@@ -39,13 +40,12 @@ bool game::init()
 	input.close();
 
 	//loader les images
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 6; i++)	///nombre de i a checker si ajout d'image
 	{
 		_texRen.push_back(text);
 		if (!_texRen.at(i).loadFromFile(nomImage[i]))
 			return EXIT_FAILURE;
 	}
-
 
 	//boucle de l'execution principale
 	while (_window.isOpen())
@@ -64,11 +64,11 @@ bool game::init()
 		//mise a jour de la fenetre
 		_window.display();
 		
-
 	}
 	return 0;
 }
 
+//gestionnaire d'event
 void game::event()
 {
 	//evenement de processus

@@ -1,7 +1,7 @@
 /*************************************************************************************
  *	Auteur:		Micael Gaumond-Roy
- *	Date:		30/11/2017
- *	Fichier:	textureRenderer.cpp
- *	But:		Vecteur d'image pour afficher dans une matrice
+ *	Date:		04/12/2017
+ *	Fichier:	gun.cpp
+ *	But:		@@@@
  ************************************************************************************/
-#include "textureRenderer.h"
+#include "gun.h"

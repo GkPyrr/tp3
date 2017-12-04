@@ -6,10 +6,11 @@
  ************************************************************************************/
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "map.hpp"
+#include "map.hpp"	///changer le nom de map pour enlever gen
+#include "vecteur.hpp"
 #include <fstream>
 #include <string>
-#include "vecteur.hpp"
+
 
 using namespace sf;
 
@@ -19,7 +20,6 @@ private:
 	gen::vecteur<Texture> _texRen;
 	gen::map<int> _gameMap;
 	RenderWindow _window;
-
 
 public:
 	game();

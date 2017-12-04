@@ -8,24 +8,11 @@
 //directive au preprocesseur
 #include <fstream>
 #include <iostream>
-//#include "map.hpp"
-//#include "vecteur.hpp"
 #include "game.h"
 #include <SFML\Graphics.hpp>
 
 using namespace std;
 using namespace sf;
-
-////enumerateur de texture
-//enum texture_type
-//{
-//	allay,
-//	wall,
-//	lowWallH,
-//	lowWallV,
-//	tunnel,
-//	player
-//};
 
 //programme principale
 int main(int argc, const char **argv)
@@ -33,58 +20,6 @@ int main(int argc, const char **argv)
 	game gamee;
 	
 	gamee.init();
-
-	//objet contenant les images
-	//Sprite *allay;
-	//Sprite *wall;
-	//Sprite *lowWallH;
-	//Sprite *lowWallV;
-	//Sprite *tunnel;
-
-	//Sprite player;
-	//player.setTexture(playerTex);
-	//player.setPosition(Vector2f(400.0, 400.0));
-
-	////vecteur de texture
-	//gen::vecteur<Texture> texVec;
-	//texVec.push_back(allayTex);
-	//texVec.push_back(wallTex);
-	//texVec.push_back(lowWallHTex);
-	//texVec.push_back(lowWallVTex);
-	//texVec.push_back(tunnelTex);
-
-	
-
-	//boucle de l'execution principale
-	//while (window.isOpen())
-	//{
-	//	//evenement de processus
-	//	Event event;
-	//	while (window.pollEvent(event))
-	//	{
-	//		///test de deplacement
-	//		if (Keyboard::W)
-	//			player.setPosition(Vector2f(player.getPosition().x, player.getPosition().y - 2.0));
-
-	//		//ferme la fenetre
-	//		if (event.type == Event::Closed)
-	//			window.close();
-	//	}
-
-	//	//mise a jour de la fenetre
-	//	window.display();
-
-
-
-	//	window.draw(player);
-
-	//	///exemple de rotation SFML
-	//	/*Sprite rotation;
-	//	rotation.setTexture(texVec[4]);
-	//	rotation.setPosition(500, 450);
-	//	rotation.setRotation(180);
-	//	window.draw(rotation);*/
-	//}
 
 	return EXIT_SUCCESS;
 }
@@ -142,3 +77,55 @@ int main(int argc, const char **argv)
 //		}
 
 ///**************************************************************************
+
+//objet contenant les images
+//Sprite *allay;
+//Sprite *wall;
+//Sprite *lowWallH;
+//Sprite *lowWallV;
+//Sprite *tunnel;
+
+//Sprite player;
+//player.setTexture(playerTex);
+//player.setPosition(Vector2f(400.0, 400.0));
+
+////vecteur de texture
+//gen::vecteur<Texture> texVec;
+//texVec.push_back(allayTex);
+//texVec.push_back(wallTex);
+//texVec.push_back(lowWallHTex);
+//texVec.push_back(lowWallVTex);
+//texVec.push_back(tunnelTex);
+
+
+
+//boucle de l'execution principale
+//while (window.isOpen())
+//{
+//	//evenement de processus
+//	Event event;
+//	while (window.pollEvent(event))
+//	{
+//		///test de deplacement
+//		if (Keyboard::W)
+//			player.setPosition(Vector2f(player.getPosition().x, player.getPosition().y - 2.0));
+
+//		//ferme la fenetre
+//		if (event.type == Event::Closed)
+//			window.close();
+//	}
+
+//	//mise a jour de la fenetre
+//	window.display();
+
+
+
+//	window.draw(player);
+
+//	///exemple de rotation SFML
+//	/*Sprite rotation;
+//	rotation.setTexture(texVec[4]);
+//	rotation.setPosition(500, 450);
+//	rotation.setRotation(180);
+//	window.draw(rotation);*/
+//}
